@@ -1,0 +1,2 @@
+1. Make responsive
+2. Streamline snake body
