@@ -73,11 +73,11 @@ function gameengine(){
         foodSound.play();
         score+=1;
 
-        if(score>highScoreVal){
-            highScoreVal=score;
-            localStorage.setItem("highScore",JSON.stringify(highScoreVal));
+        if(score>highScore){
+            highScore=score;
+            localStorage.setItem("highScore",JSON.stringify(highScore));
             let highScoreBox=document.getElementById('highScoreBox');
-            highScoreBox.innerHTML="HIGH SCORE: "+highScoreVal;
+            highScoreBox.innerHTML="HIGH SCORE: "+highScore;
         }
         
         let score_id=document.getElementById('score');
