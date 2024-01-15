@@ -20,23 +20,47 @@ let food={x:Math.round(a+(b-a)*Math.random()),y:Math.round(a+(b-a)*Math.random()
 let score=0;
 
 const beg = document.getElementById("beg");
+const med = document.getElementById("med");
 const pro = document.getElementById("pro");
 
 //difficulty Selection
 beg.addEventListener("click",function(){
-    difficulty = 1;
-    console.log(difficulty);
+    fps=8;
     
-    // displayTest(difficulty);
-    // invertColor(beg,pro);
+    document.getElementById('gameFinishText').innerText="";
+
+    invertColor(beg,med,pro);
 });
 
-pro.addEventListener("click",function(){
-    difficulty = 2;
-    console.log(difficulty);
-    // displayTest(difficulty);
-    // invertColor(pro,beg);
+med.addEventListener("click",function(){
+    fps=16;
+    
+    document.getElementById('gameFinishText').innerText="";
+
+    invertColor(med,beg,pro);
 });
+
+
+
+pro.addEventListener("click",function(){
+    fps=24;
+
+    document.getElementById('gameFinishText').innerText="";
+
+    invertColor(pro,beg,med);
+    
+});
+
+function invertColor(itema,itemr,itemr2){
+    itema.classList.add('yellow');
+    itemr.classList.remove('yellow');
+    itemr2.classList.remove('yellow');
+
+    // Make these unclickable after game starts & then again clickable after game ends
+    // beg.style.display="none";
+    // med.style.display="none";
+    // pro.style.display="none";
+}
 
 
 // Game Functions
@@ -76,8 +100,9 @@ function gameengine(){
         gameOverSound.play();
         gameSound.load();
         inputDir={x:0,y:0};
-        alert("Game Over! Press any key to start again");
+        document.getElementById('gameFinishText').innerText="Game Over! Press any key to start again";
         snakeArr=[{x:13,y:15}];
+
 
         score=0;
 
@@ -85,6 +110,10 @@ function gameengine(){
 
         let ele=document.getElementById("score");
         ele.innerHTML="SCORE: "+score;
+
+        beg.style.display="inline";
+        med.style.display="inline"
+        pro.style.display="inline";
 
     }
 
@@ -146,7 +175,8 @@ if(highScore===null){
     let highScoreVal=0;
     localStorage.setItem("highScore",JSON.stringify(highScoreVal));
 }else{
-    highScoreVal=JSON.parse(highScore)
+    let highScoreVal=JSON.parse(highScore);
+    let highScoreBox=document.getElementById('highScoreBox');
     highScoreBox.innerHTML="High Score: "+highScoreVal;
 }
 
@@ -156,6 +186,7 @@ window.addEventListener('keydown',e=>{
     gameSound.play();
     moveSound.play();
     inputDir={x:0,y:1};//Default key(arrowdown)
+    document.getElementById('gameFinishText').innerText="";
     
     switch(e.key){
         case "ArrowUp":
