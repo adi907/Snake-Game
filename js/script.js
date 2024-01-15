@@ -19,6 +19,26 @@ let food={x:Math.round(a+(b-a)*Math.random()),y:Math.round(a+(b-a)*Math.random()
 
 let score=0;
 
+const beg = document.getElementById("beg");
+const pro = document.getElementById("pro");
+
+//difficulty Selection
+beg.addEventListener("click",function(){
+    difficulty = 1;
+    console.log(difficulty);
+    
+    // displayTest(difficulty);
+    // invertColor(beg,pro);
+});
+
+pro.addEventListener("click",function(){
+    difficulty = 2;
+    console.log(difficulty);
+    // displayTest(difficulty);
+    // invertColor(pro,beg);
+});
+
+
 // Game Functions
 
 function main(ctime){
