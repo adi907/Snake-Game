@@ -4,15 +4,16 @@
 }
 
 body{
+    width: 100vw;height: 100vh;
     background: url("../static/bg.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-
 }
 
 .limits-box{
     text-align: center;
+    height:10vh;
     margin:2vw auto;
     font-size: 15px;
 }
@@ -31,21 +32,24 @@ a:focus,a:hover{
     color: #ffd369;
 }
 
-#score{    
-    font-size: 2.5rem;
+#score{
+    display: flex;
+    justify-content: center;
+    align-items: center;  
     font-weight: bold;
 }
 #highScoreBox{
-    font-size: 2rem;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #board{
-    /* background:linear-gradient(green,yellow); */
     background: url("../static/background.jpg");
     border:2px solid black;
 
-    width:75vmin;/* vmin=min(vh,vw) */
+    /* vmin=min(vh,vw) */
+    width:75vmin;
     height:75vmin;
     margin:auto;
 
@@ -60,14 +64,12 @@ a:focus,a:hover{
 }
 
 .snake{
-    /* background-color: purple; */
-    background-image: url('../static/body.jpg');
+    background-color: greenyellow;
     background-size: cover;
-    max-width: 75%;
+    border-radius: 50%;
 }
 
 .food{
-    /* background-color: pink; */
     background-image: url('../static/pizza.png');
     background-size: cover;
 }
@@ -81,3 +83,59 @@ a:focus,a:hover{
     text-align: center;
 }
 
+@media (min-width:580px) and (max-width:880px ){
+    #board{
+        width:50vmin;
+        height:50vmin;
+    }
+
+    #score{  
+        font-size: 32px;
+    }
+    #highScoreBox{
+        font-size: 24px;
+    }
+
+    #scorebox{
+        margin:auto;
+    }
+
+}
+@media (min-width:410px) and (max-width:580px ){
+    #board{
+        width:50vmin;
+        height:50vmin;
+    }
+
+    #scorebox{
+        margin:auto;
+    }
+
+    #score{  
+        font-size: 20px;
+    }
+    #highScoreBox{
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (max-width:410px ){
+
+    #board{
+        width:50vmin;
+        height:50vmin;
+    }
+
+    #scorebox{
+        margin:auto;
+    }
+
+    #score{  
+        font-size: 16px;
+    }
+    #highScoreBox{
+        font-size: 10px;
+    }
+
+}

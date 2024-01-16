@@ -19,6 +19,8 @@ let food={x:Math.round(a+(b-a)*Math.random()),y:Math.round(a+(b-a)*Math.random()
 
 let score=0;
 
+const difficulty_box=document.querySelector('.limit');
+
 const beg = document.getElementById("beg");
 const med = document.getElementById("med");
 const pro = document.getElementById("pro");
@@ -57,9 +59,8 @@ function invertColor(itema,itemr,itemr2){
     itemr2.classList.remove('yellow');
 
     // Make these unclickable after game starts & then again clickable after game ends
-    // beg.style.display="none";
-    // med.style.display="none";
-    // pro.style.display="none";
+    difficulty_box.style.display="none";
+
 }
 
 
@@ -109,11 +110,9 @@ function gameengine(){
         // gameSound.play();
 
         let ele=document.getElementById("score");
-        ele.innerHTML="SCORE: "+score;
+        ele.innerText="SCORE: "+score;
 
-        beg.style.display="inline";
-        med.style.display="inline"
-        pro.style.display="inline";
+        difficulty_box.style.display="block";
 
     }
 
@@ -126,11 +125,11 @@ function gameengine(){
             highScore=score;
             localStorage.setItem("highScore",JSON.stringify(highScore));
             let highScoreBox=document.getElementById('highScoreBox');
-            highScoreBox.innerHTML="HIGH SCORE: "+highScore;
+            highScoreBox.innerText="HIGH SCORE: "+highScore;
         }
         
         let score_id=document.getElementById('score');
-        score_id.innerHTML="SCORE: "+score;
+        score_id.innerText="SCORE: "+score;
         
         snakeArr.unshift({x:snakeArr[0].x+inputDir.x,y:snakeArr[0].y+inputDir.y});//unshift adds element to start of array
         food={x:Math.round(a+(b-a)*Math.random()),y:Math.round(a+(b-a)*Math.random())}        
@@ -177,16 +176,19 @@ if(highScore===null){
 }else{
     let highScoreVal=JSON.parse(highScore);
     let highScoreBox=document.getElementById('highScoreBox');
-    highScoreBox.innerHTML="High Score: "+highScoreVal;
+    highScoreBox.innerText="High Score: "+highScoreVal;
 }
 
 window.requestAnimationFrame(main);
 
+// Game started by user + Game being played by user(constantly changing directions)
 window.addEventListener('keydown',e=>{
     gameSound.play();
     moveSound.play();
     inputDir={x:0,y:1};//Default key(arrowdown)
+
     document.getElementById('gameFinishText').innerText="";
+    difficulty_box.style.display="none";
     
     switch(e.key){
         case "ArrowUp":
