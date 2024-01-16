@@ -75,11 +75,11 @@ a:focus,a:hover{
 }
 
 #gameFinishText{
-    display: block;
-    width: 90vw;
-    position: absolute;
-    bottom:0px;
+    width: 100vw;
+    margin-top: 2vh;
+
     color:red;
+    font-weight: bold;
     text-align: center;
 }
 
